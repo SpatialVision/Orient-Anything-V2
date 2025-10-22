@@ -5,14 +5,14 @@ import torch
 import tempfile
 import os
 
-# ====== 你的原有导入和模型加载保持不变 ======
 from paths import *
 from vision_tower import VGGT_OriAny_Ref
 from inference import *
 from app_utils import *
 from axis_renderer import BlendRenderer
 
-ckpt_path = LOCAL_CKPT_PATH
+from huggingface_hub import hf_hub_download
+ckpt_path = hf_hub_download(repo_id="Viglong/Orient-Anything-V2", filename=HF_CKPT_PATH, repo_type="model", cache_dir='./', resume_download=True)
 print(ckpt_path)
 
 mark_dtype = torch.bfloat16 if torch.cuda.get_device_capability()[0] >= 8 else torch.float16
