@@ -29,8 +29,8 @@ ONEPOSEPP_ROOT  = f'{DATA_ROOT}/POPE/data/onepose_plusplus/'
 YCBV_ROOT       = f'{DATA_ROOT}/POPE/data/ycbv/'
 POPE_ROOT       = f'{DATA_ROOT}/POPE/data/'
 
-OMNI6DPOSE_META     = f'{DATA_ROOT}/Omni6DPose/Meta/obj_meta_angle.csv'
 OMNI6DPOSE_META_BAL = f'{DATA_ROOT}/Omni6DPose/Meta/obj_meta_angle_balanced.csv'
+OMNI6DPOSE_ROOT     = f'{DATA_ROOT}/Omni6DPose/render_output/'
 
 OBJECTRON_META  = f'{DATA_ROOT}/objectron/objectron_meta.csv'
 OBJECTRON_ROOT  = f'{DATA_ROOT}/objectron/objectron_data/test_crop/'

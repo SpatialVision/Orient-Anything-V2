@@ -13,11 +13,11 @@ Orient Anything V2: Unifying Orientation and Rotation Understanding</h1>
 <a href='https://orient-anythingv2.github.io'><img src='https://img.shields.io/badge/Project_Page-OriAnyV2-green' alt='Project Page'></a>
 <a href='https://huggingface.co/spaces/Viglong/Orient-Anything-V2'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue'></a>
 <a href='https://huggingface.co/datasets/Viglong/OriAnyV2_Train_Render'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Train Data-orange'></a>
-<a href='https://huggingface.co/datasets/Viglong/OriAnyV2_Inference'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Val Data-orange'></a>
+<a href='https://huggingface.co/datasets/Viglong/OriAnyV2_Inference'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Test Data-orange'></a>
 <a href='https://huggingface.co/papers/2412.18605'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Paper-yellow'></a>
 </div>
 
-**Orient Anything V2**, a robust image-based object orientation estimation model. By training on 2M rendered labeled images, it achieves strong zero-shot generalization ability for images in the wild.
+**Orient Anything V2**, a unified spatial vision model for understanding orientation, symmetry, and relative rotation, achieves SOTA performance across 14 datasets.
 
 ![teaser](assets/overview.jpg)
 
@@ -26,9 +26,9 @@ Orient Anything V2: Unifying Orientation and Rotation Understanding</h1>
 
 * **2025-09-18:** 🔥Orient Anything V2 has been accepted as a Spotlight @ NeurIPS 2025!
 
-## Pre-trained models
+## Pre-trained Model Weights
 
-We provide xxxx:
+We provide pre-trained model weights and are continuously iterating on them to support more inference scenarios:
 
 | Model | Params | Checkpoint |
 |:-|-:|:-:|
@@ -38,7 +38,7 @@ We provide xxxx:
 
 ### 1 Dependency Prepraration
 
-```bash
+```shell
 conda create -n orianyv2 python=3.11
 
 conda activate orianyv2
@@ -128,12 +128,26 @@ image_tgt = Image.open(image_tgt_path).convert('RGB')
 run_inference(image_ref, image_tgt, True)
 ```
 
-## Evaluate Orient-Anything-V2 on Datasets
-
+## Evaluate Orient-Anything-V2
 
 ### Data Preparation
-下载常识位姿，相对位姿和多方向性测试数据，并解压。
-修改paths.py中的相关变量，使路径指向数据集目录和元数据文件。
+Download the absolute orientation, relative rotation, and symm-orientation test datasets from [Huggingface Dataset](https://huggingface.co/datasets/Viglong/OriAnyV2_Inference).
+```shell
+# set mirror endpoint to accelerate
+# export HF_ENDPOINT='https://hf-mirror.com'
+
+huggingface-cli download --repo-type dataset Viglong/OriAnyV2_Inference --local-dir OriAnyV2_Inference
+```
+Use the following command to extract the dataset:
+
+```shell
+cd OriAnyV2_Inference
+for f in *.tar.gz; do
+    tar -xzf "$f"
+done
+```
+
+Modify `DATA_ROOT` in `paths.py` to point to the dataset root directory(`/path/to/OriAnyV2_Inference`).
 
 
 ### Evaluate with torch-lightning
@@ -145,19 +159,18 @@ python eval_on_dataset.py
 
 ## Train Orient-Anything-V2
 
-我们使用Hunyuan3D-2.0模型生成我们的训练数据。
-Download Fully Generated Training Dataset.
+We use `FLUX.1-dev` and `Hunyuan3D-2.0` to generate our training data and render it with Blender. We provide the fully rendered data, which you can obtain from the link below.
 
-[Train Dataset]()
-为了完全存储这些数据，我们推荐你的服务器上至少拥有2TB的硬盘空间空余。
+[Hunyuan3D-FLUX-Gen](https://huggingface.co/datasets/Viglong/Hunyuan3D-FLUX-Gen)
 
-Training Code (Todo)
+To store all this data, we recommend having at least **2TB** of free disk space on your server.
 
-Data pipeline (Todo)
+We are currently organizing the complete **data construction pipeline** and **training code** for Orient-Anything-V2 — stay tuned.
 
 ## Acknowledgement
 We would like to express our sincere gratitude to the following excellent works: 
 - [VGGT](https://github.com/facebookresearch/vggt)
+- [FLUX](https://github.com/black-forest-labs/flux)
 - [Hunyuan3D-2.0](https://github.com/Tencent-Hunyuan/Hunyuan3D-2)
 - [Blender](https://github.com/blender/blender)
 - [rembg](https://github.com/danielgatis/rembg)

@@ -301,9 +301,6 @@ class Projector(pl.LightningModule):
 
         self.image_dir_dict = val_res_dict
         self.val_len = val_len_dict
-
-    def transfer_batch_to_device(self, batch, device, dataloader_idx):
-        return batch
     
     def on_validation_epoch_start(self):
         self.image_dir_dict = val_res_dict
@@ -383,27 +380,27 @@ class Projector(pl.LightningModule):
                 self.image_dir_dict['ycbv_ro'].append(rel_ro_pred)
                 self.image_dir_dict['ycbv_alpha'].append(rel_alpha_pred)
 
+            
             if dataloader_idx==4:
-                self.image_dir_dict['lm_rnd_az'].append(rel_az_pred)
-                self.image_dir_dict['lm_rnd_el'].append(rel_el_pred)
-                self.image_dir_dict['lm_rnd_ro'].append(rel_ro_pred)
-                self.image_dir_dict['lm_rnd_alpha'].append(rel_alpha_pred)
-            if dataloader_idx==5:
-                self.image_dir_dict['ycbv_rnd_az'].append(rel_az_pred)
-                self.image_dir_dict['ycbv_rnd_el'].append(rel_el_pred)
-                self.image_dir_dict['ycbv_rnd_ro'].append(rel_ro_pred)
-                self.image_dir_dict['ycbv_rnd_alpha'].append(rel_alpha_pred)
-            if dataloader_idx==6:
                 self.image_dir_dict['op_rnd_az'].append(rel_az_pred)
                 self.image_dir_dict['op_rnd_el'].append(rel_el_pred)
                 self.image_dir_dict['op_rnd_ro'].append(rel_ro_pred)
                 self.image_dir_dict['op_rnd_alpha'].append(rel_alpha_pred)
-            if dataloader_idx==7:
+            if dataloader_idx==5:
                 self.image_dir_dict['oppp_rnd_az'].append(rel_az_pred)
                 self.image_dir_dict['oppp_rnd_el'].append(rel_el_pred)
                 self.image_dir_dict['oppp_rnd_ro'].append(rel_ro_pred)
                 self.image_dir_dict['oppp_rnd_alpha'].append(rel_alpha_pred)
-            
+            if dataloader_idx==6:
+                self.image_dir_dict['lm_rnd_az'].append(rel_az_pred)
+                self.image_dir_dict['lm_rnd_el'].append(rel_el_pred)
+                self.image_dir_dict['lm_rnd_ro'].append(rel_ro_pred)
+                self.image_dir_dict['lm_rnd_alpha'].append(rel_alpha_pred)
+            if dataloader_idx==7:
+                self.image_dir_dict['ycbv_rnd_az'].append(rel_az_pred)
+                self.image_dir_dict['ycbv_rnd_el'].append(rel_el_pred)
+                self.image_dir_dict['ycbv_rnd_ro'].append(rel_ro_pred)
+                self.image_dir_dict['ycbv_rnd_alpha'].append(rel_alpha_pred)
            
     def on_validation_epoch_end(self):
         device = self.model.get_device()
@@ -532,12 +529,9 @@ class Projector(pl.LightningModule):
             print('omni6dpose_symm', omni6dpose_symm_acc)
 
         else:
-            self.ckpt_metric = 0.
+            pass
         
         torch.cuda.empty_cache()
-        self.trainer.strategy.barrier()
-        ckpt_metric = self.all_gather(self.ckpt_metric)[0]
-        # print(ckpt_metric)
         self.trainer.strategy.barrier()
 
 def main(cfg):
@@ -636,7 +630,7 @@ def main(cfg):
         from huggingface_hub import hf_hub_download
         ckpt_path = hf_hub_download(repo_id="Viglong/Orient-Anything-V2", filename=HF_CKPT_PATH, repo_type="model", cache_dir='./', resume_download=True)
     print(ckpt_path)
-    pl_model.model.load_state_dict(torch.load(ckpt_path), map_location='cpu')
+    pl_model.model.load_state_dict(torch.load(ckpt_path, weights_only=True))
 
     trainer.validate(pl_model, val_loaders)
     
