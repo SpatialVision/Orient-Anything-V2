@@ -1,6 +1,6 @@
 import torch
 from PIL import Image
-from app_utils import *
+from utils.app_utils import *
 import torch.nn.functional as F
 import numpy as np
 from torchvision import transforms as TF

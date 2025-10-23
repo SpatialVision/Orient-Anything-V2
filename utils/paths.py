@@ -5,7 +5,7 @@ DINO_GIANT  = "facebook/dinov2-giant"
 VGGT_1B     = "facebook/VGGT-1B"
 
 HF_CKPT_PATH = "demo_ckpts/rotmod_realrotaug_best.pt"
-LOCAL_CKPT_PATH = ""
+LOCAL_CKPT_PATH = "/root/autodl-tmp/zza_backup/OriAnyV2_ckpt/rotmod_realrotaug/rotmod_realrotaug_best.pt"
 
 RENDER_FILE = "assets/axis_render.blend"
 

@@ -7,11 +7,11 @@ import numpy as np
 import lightning.pytorch as pl
 import pandas as pd
 
-from utils import *
-from paths import *
+from utils.utils import *
+from utils.paths import *
 
 from vision_tower import VGGT_OriAny_Ref
-from data import COCO_Bench_VGGT, coco_class_map, Abs_Ori_Bench_VGGT, Ref_Pose_Val, Omni6DPose_Bench_VGGT
+from utils.data import COCO_Bench_VGGT, coco_class_map, Abs_Ori_Bench_VGGT, Ref_Pose_Val, Omni6DPose_Bench_VGGT
 
 def validate_coco_8dir(labels, az_preds, alpha_preds, cls_s):
     device = labels.device

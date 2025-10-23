@@ -5,11 +5,11 @@ import torch
 import tempfile
 import os
 
-from paths import *
+from utils.paths import *
 from vision_tower import VGGT_OriAny_Ref
 from inference import *
-from app_utils import *
-from axis_renderer import BlendRenderer
+from utils.app_utils import *
+from utils.axis_renderer import BlendRenderer
 
 if os.path.exists(LOCAL_CKPT_PATH):
     ckpt_path = LOCAL_CKPT_PATH

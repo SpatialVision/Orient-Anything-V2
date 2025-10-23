@@ -1,7 +1,7 @@
 import bpy
 import math
 import os
-from paths import *
+from utils.paths import *
 
 class BlendRenderer:
     def __init__(self, blend_file_path=RENDER_FILE):

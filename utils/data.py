@@ -7,8 +7,8 @@ import numpy as np
 import random
 import pandas as pd
 
-from paths import *
-from utils import *
+from utils.paths import *
+from utils.utils import *
 import random
 
 from vggt.utils.load_fn import load_and_preprocess_images

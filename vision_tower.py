@@ -1,12 +1,9 @@
-# import sys
-# sys.path.append("..")
-
 import torch
 from torch import nn
 import torch.nn.init as init
 import torch.nn.functional as F
 
-from paths import *
+from utils.paths import *
 from typing import Dict, List, Optional, Set, Tuple, Union
 import os
 
