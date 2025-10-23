@@ -11,9 +11,11 @@ from inference import *
 from app_utils import *
 from axis_renderer import BlendRenderer
 
-from huggingface_hub import hf_hub_download
-ckpt_path = hf_hub_download(repo_id="Viglong/Orient-Anything-V2", filename=HF_CKPT_PATH, repo_type="model", cache_dir='./', resume_download=True)
-print(ckpt_path)
+if os.path.exists(LOCAL_CKPT_PATH):
+    ckpt_path = LOCAL_CKPT_PATH
+else:
+    from huggingface_hub import hf_hub_download
+    ckpt_path = hf_hub_download(repo_id="Viglong/Orient-Anything-V2", filename=HF_CKPT_PATH, repo_type="model", cache_dir='./', resume_download=True)
 
 mark_dtype = torch.bfloat16 if torch.cuda.get_device_capability()[0] >= 8 else torch.float16
 # device = 'cuda:0'

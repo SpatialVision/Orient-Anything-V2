@@ -9,7 +9,7 @@ einops
 pandas
 pillow
 huggingface_hub>=0.23
-pytorch-lightning
+lightning==2.2
 scipy
 torch
 torchmetrics

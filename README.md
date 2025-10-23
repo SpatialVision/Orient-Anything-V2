@@ -36,9 +36,13 @@ We provide xxxx:
 
 ## Quick Start
 
-### 1 Prepraration
+### 1 Dependency Prepraration
 
 ```bash
+conda create -n orianyv2 python=3.11
+
+conda activate orianyv2
+
 pip install -r requirements.txt
 ```
 
@@ -69,9 +73,11 @@ mark_dtype = torch.bfloat16 if torch.cuda.get_device_capability()[0] >= 8 else t
 # device = 'cuda:0'
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-from huggingface_hub import hf_hub_download
-ckpt_path = hf_hub_download(repo_id="Viglong/Orient-Anything-V2", filename=HF_CKPT_PATH, repo_type="model", cache_dir='./', resume_download=True)
-print(ckpt_path)
+if os.path.exists(LOCAL_CKPT_PATH):
+    ckpt_path = LOCAL_CKPT_PATH
+else:
+    from huggingface_hub import hf_hub_download
+    ckpt_path = hf_hub_download(repo_id="Viglong/Orient-Anything-V2", filename=HF_CKPT_PATH, repo_type="model", cache_dir='./', resume_download=True)
 
 model = VGGT_OriAny_Ref(out_dim=900, dtype=mark_dtype, nopretrain=True)
 model.load_state_dict(torch.load(ckpt_path, map_location='cpu'))
@@ -149,13 +155,17 @@ Training Code (Todo)
 
 Data pipeline (Todo)
 
-## Citation
+## Acknowledgement
+We would like to express our sincere gratitude to the following excellent works: 
+- [VGGT](https://github.com/facebookresearch/vggt)
+- [Hunyuan3D-2.0](https://github.com/Tencent-Hunyuan/Hunyuan3D-2)
+- [Blender](https://github.com/blender/blender)
+- [rembg](https://github.com/danielgatis/rembg)
 
+
+## Citation
 If you find this project useful, please consider citing:
 
 ```bibtex
 
 ```
-
-## Acknowledgement
-Thanks to the open source of the following projects: [VGGT](https://github.com/facebookresearch/vggt), [Hunyuan3D-2.0](https://github.com/Tencent-Hunyuan/Hunyuan3D-2), [Blender](https://github.com/blender/blender), [rembg](https://github.com/danielgatis/rembg)
