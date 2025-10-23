@@ -7,7 +7,6 @@ import os
 
 from utils.paths import *
 from vision_tower import VGGT_OriAny_Ref
-from inference import *
 from utils.app_utils import *
 from utils.axis_renderer import BlendRenderer
 
