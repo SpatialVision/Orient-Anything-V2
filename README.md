@@ -2,7 +2,7 @@
 <h1>[NeurIPS 2025 Spotlight]<br>
 Orient Anything V2: Unifying Orientation and Rotation Understanding</h1>
 
-[**Zehan Wang**](https://scholar.google.com/citations?user=euXK0lkAAAAJ)<sup>1*</sup> · [**Ziang Zhang**](https://scholar.google.com/citations?hl=zh-CN&user=DptGMnYAAAAJ)<sup>1*</sup> · [**Jialei Wang**](https://scholar.google.com/citations?hl=en&user=OIuFz1gAAAAJ)<sup>2</sup> · [**Jiayang Xu**](https://github.com/1339354001)<sup>2</sup> · [**Tianyu Pang**](https://scholar.google.com/citations?hl=zh-CN&user=wYDbtFsAAAAJ)<sup>2</sup> · [**Du Chao**](https://scholar.google.com/citations?hl=zh-CN&user=QOp7xW0AAAAJ)<sup>2</sup> · [**Hengshuang Zhao**](https://scholar.google.com/citations?user=4uE10I0AAAAJ&hl&oi=ao)<sup>3</sup> · [**Zhou Zhao**](https://scholar.google.com/citations?user=IIoFY90AAAAJ&hl&oi=ao)<sup>1</sup>
+[**Zehan Wang**](https://scholar.google.com/citations?user=euXK0lkAAAAJ)<sup>1*</sup> · [**Ziang Zhang**](https://scholar.google.com/citations?hl=zh-CN&user=DptGMnYAAAAJ)<sup>1*</sup> · [**Jialei Wang**](https://scholar.google.com/citations?hl=en&user=OIuFz1gAAAAJ)<sup>1</sup> · [**Jiayang Xu**](https://github.com/1339354001)<sup>1</sup> · [**Tianyu Pang**](https://scholar.google.com/citations?hl=zh-CN&user=wYDbtFsAAAAJ)<sup>2</sup> · [**Du Chao**](https://scholar.google.com/citations?hl=zh-CN&user=QOp7xW0AAAAJ)<sup>2</sup> · [**Hengshuang Zhao**](https://scholar.google.com/citations?user=4uE10I0AAAAJ&hl&oi=ao)<sup>3</sup> · [**Zhou Zhao**](https://scholar.google.com/citations?user=IIoFY90AAAAJ&hl&oi=ao)<sup>1</sup>
 
 <sup>1</sup>Zhejiang University&emsp;&emsp;&emsp;&emsp;<sup>2</sup>SEA AI Lab&emsp;&emsp;&emsp;&emsp;<sup>3</sup>HKU
 
@@ -36,7 +36,7 @@ We provide pre-trained model weights and are continuously iterating on them to s
 
 ## Quick Start
 
-### 1 Dependency Prepraration
+### 1 Dependency Installation
 
 ```shell
 conda create -n orianyv2 python=3.11
