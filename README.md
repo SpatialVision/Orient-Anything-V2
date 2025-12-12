@@ -180,5 +180,9 @@ We would like to express our sincere gratitude to the following excellent works:
 If you find this project useful, please consider citing:
 
 ```bibtex
-
+@inproceedings{wangorient,
+  title={Orient Anything V2: Unifying Orientation and Rotation Understanding},
+  author={Wang, Zehan and Zhang, Ziang and Xu, Jiayang and Wang, Jialei and Pang, Tianyu and Du, Chao and Zhao, Hengshuang and Zhao, Zhou},
+  booktitle={The Thirty-ninth Annual Conference on Neural Information Processing Systems}
+}
 ```
