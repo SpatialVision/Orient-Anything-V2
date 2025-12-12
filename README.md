@@ -9,7 +9,7 @@ Orient Anything V2: Unifying Orientation and Rotation Understanding</h1>
 *Equal Contribution
 
 
-<a href='https://arxiv.org/abs/2412.18605'><img src='https://img.shields.io/badge/arXiv-PDF-red' alt='Paper PDF'></a>
+<a href='https://openreview.net/pdf?id=n3armuTFit'><img src='https://img.shields.io/badge/arXiv-PDF-red' alt='Paper PDF'></a>
 <a href='https://orient-anythingv2.github.io'><img src='https://img.shields.io/badge/Project_Page-OriAnyV2-green' alt='Project Page'></a>
 <a href='https://huggingface.co/spaces/Viglong/Orient-Anything-V2'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue'></a>
 <a href='https://huggingface.co/datasets/Viglong/OriAnyV2_Train_Render'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Train Data-orange'></a>
@@ -22,7 +22,7 @@ Orient Anything V2: Unifying Orientation and Rotation Understanding</h1>
 ![teaser](assets/overview.jpg)
 
 ## News
-* **2025-10-24:** 🔥[Paper](https://arxiv.org/abs/2412.18605), [Project Page](https://orient-anythingv2.github.io), [Code](https://github.com/SpatialVision/Orient-Anything-V2), [Model Checkpoint](https://huggingface.co/Viglong/OriAnyV2_ckpt/blob/main/demo_ckpts/rotmod_realrotaug_best.pt), and [Demo](https://huggingface.co/spaces/Viglong/Orient-Anything-V2) have been released!
+* **2025-12-12:** 🔥[Paper](https://openreview.net/pdf?id=n3armuTFit), [Project Page](https://orient-anythingv2.github.io), [Code](https://github.com/SpatialVision/Orient-Anything-V2), [Training Data](https://huggingface.co/datasets/Viglong/OriAnyV2_Train_Render), [Model Checkpoint](https://huggingface.co/Viglong/OriAnyV2_ckpt/blob/main/demo_ckpts/rotmod_realrotaug_best.pt), and [Demo](https://huggingface.co/spaces/Viglong/Orient-Anything-V2) have been released!
 
 * **2025-09-18:** 🔥Orient Anything V2 has been accepted as a Spotlight @ NeurIPS 2025!
 
@@ -161,7 +161,11 @@ python eval_on_dataset.py
 
 We use `FLUX.1-dev` and `Hunyuan3D-2.0` to generate our training data and render it with Blender. We provide the fully rendered data, which you can obtain from the link below.
 
-[Hunyuan3D-FLUX-Gen](https://huggingface.co/datasets/Viglong/Hunyuan3D-FLUX-Gen)
+
+| Assets | Disk Space | Download Link |
+|:-|-:|:-:|
+| Images and 3D assets in the data pipeline | 2 TB | [Hunyuan3D-FLUX-Gen](https://huggingface.co/datasets/Viglong/Hunyuan3D-FLUX-Gen) |
+| Final Rendering Data | 25 GB | [Training Dataset](https://huggingface.co/datasets/Viglong/OriAnyV2_Train_Render) |
 
 To store all this data, we recommend having at least **2TB** of free disk space on your server.
 
